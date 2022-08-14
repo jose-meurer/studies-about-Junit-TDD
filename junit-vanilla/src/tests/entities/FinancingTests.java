@@ -25,4 +25,25 @@ public class FinancingTests {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> FinancingFactory.createWith20Months());
 	}
 
-}
+	@Test
+	public void setTotalAmountShouldUpdateTotalAmountWhenValidData() {
+		
+		double expectedEntry = 10000.0;
+		double expectedQuota = 500.0;
+		Financing f = FinancingFactory.createWith80Months();
+		f.setTotalAmount(50000.0);
+		
+		Assertions.assertTrue(expectedEntry == f.entry());
+		Assertions.assertTrue(expectedQuota == f.quota());
+	}
+	
+	@Test
+	public void setTotalAmountShouldThrowExceptionWhenInvalidData() {
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			Financing f = FinancingFactory.createWith80Months();
+			f.setTotalAmount(101000.0);
+					});
+		}
+	}
+
