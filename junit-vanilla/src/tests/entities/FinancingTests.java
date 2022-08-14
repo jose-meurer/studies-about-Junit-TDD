@@ -28,14 +28,12 @@ public class FinancingTests {
 	@Test
 	public void setTotalAmountShouldUpdateTotalAmountWhenValidData() {
 		
-		double expectedEntry = 10000.0;
-		double expectedQuota = 500.0;
+		double expectedTotalAmount = 50000.0;
 		Financing f = FinancingFactory.createWith80Months();
 		
-		f.setTotalAmount(50000.0);
+		f.setTotalAmount(expectedTotalAmount);
 		
-		Assertions.assertTrue(expectedEntry == f.entry());
-		Assertions.assertTrue(expectedQuota == f.quota());
+		Assertions.assertTrue(expectedTotalAmount == f.getTotalAmount());
 	}
 	
 	@Test
@@ -48,16 +46,14 @@ public class FinancingTests {
 		}
 	
 	@Test
-	public void setIncomeShouldUpdateValueWhenValidData() {
+	public void setIncomeShouldUpdateIncomeWhenValidData() {
 		
-		double expectedEntry = 20000.0;
-		double expectedQuota = 1000.0;
+		double expectedIncome = 2001.0;
 		Financing f = FinancingFactory.createWith80Months();
 		
-		f.setIncome(2001.0);
+		f.setIncome(expectedIncome);
 		
-		Assertions.assertEquals(expectedEntry, f.entry());
-		Assertions.assertEquals(expectedQuota, f.quota());
+		Assertions.assertEquals(expectedIncome, f.getIncome());
 	}
 	
 	@Test
@@ -70,16 +66,14 @@ public class FinancingTests {
 	}
 	
 	@Test
-	public void setMonthsShouldUpdateValueWhenValidData() {
+	public void setMonthsShouldUpdateMonthsWhenValidData() {
 		
-		double expectedEntry = 20000.0;
-		double expectedQuota = 987.6543209876543;
+		int expectedMonths = 81;
 		Financing f = FinancingFactory.createWith80Months();
 		
-		f.setMonths(81);
+		f.setMonths(expectedMonths);
 		
-		Assertions.assertEquals(expectedEntry, f.entry());
-		Assertions.assertEquals(expectedQuota, f.quota());
+		Assertions.assertEquals(expectedMonths, f.getMonths());
 	}
 	
 	@Test
@@ -89,6 +83,24 @@ public class FinancingTests {
 			Financing f = FinancingFactory.createWith80Months();
 			f.setMonths(79);
 		});
+	}
+	
+	@Test
+	public void entryShouldCorrectEntryValueWhenValidData() {
+		
+		double expectedEntry = 20000.0;
+		Financing f = FinancingFactory.createWith80Months();
+		
+		Assertions.assertEquals(expectedEntry, f.entry());
+	}
+	
+	@Test
+	public void quotaShouldCorrectQuotaValueWhenValidData() {
+		
+		double expectedQuota = 1000.0;
+		Financing f = FinancingFactory.createWith80Months();
+		
+		Assertions.assertEquals(expectedQuota, f.quota());
 	}
 }
 
