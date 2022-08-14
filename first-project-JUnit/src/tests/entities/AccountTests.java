@@ -9,7 +9,7 @@ import tests.factory.AccountFactory;
 public class AccountTests {
 
 	@Test
-	public void depositShouldIncreseBalanceWhenPositiveAmount() {
+	public void depositShouldIncreaseBalanceWhenPositiveAmount() {
 		
 		double amount = 200.0;
 		double expectedValue = 196.0;
