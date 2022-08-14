@@ -31,6 +31,7 @@ public class FinancingTests {
 		double expectedEntry = 10000.0;
 		double expectedQuota = 500.0;
 		Financing f = FinancingFactory.createWith80Months();
+		
 		f.setTotalAmount(50000.0);
 		
 		Assertions.assertTrue(expectedEntry == f.entry());
@@ -45,5 +46,27 @@ public class FinancingTests {
 			f.setTotalAmount(101000.0);
 					});
 		}
+	
+	@Test
+	public void setIncomeShouldUpdateValueWhenValidData() {
+		
+		double expectedEntry = 20000.0;
+		double expectedQuota = 1000.0;
+		Financing f = FinancingFactory.createWith80Months();
+		
+		f.setIncome(2001.0);
+		
+		Assertions.assertEquals(expectedEntry, f.entry());
+		Assertions.assertEquals(expectedQuota, f.quota());
 	}
+	
+	@Test
+	public void setIncomeShouldThrowExceptionWhenInvalidData() {
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			Financing f = FinancingFactory.createWith80Months();
+			f.setIncome(1999.0);
+		});
+	}
+}
 
