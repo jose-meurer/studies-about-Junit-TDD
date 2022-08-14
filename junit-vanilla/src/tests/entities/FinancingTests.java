@@ -68,5 +68,27 @@ public class FinancingTests {
 			f.setIncome(1999.0);
 		});
 	}
+	
+	@Test
+	public void setMonthsShouldUpdateValueWhenValidData() {
+		
+		double expectedEntry = 20000.0;
+		double expectedQuota = 987.6543209876543;
+		Financing f = FinancingFactory.createWith80Months();
+		
+		f.setMonths(81);
+		
+		Assertions.assertEquals(expectedEntry, f.entry());
+		Assertions.assertEquals(expectedQuota, f.quota());
+	}
+	
+	@Test
+	public void setMonthsShouldThrowExceptionWhenInvalidData() {
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			Financing f = FinancingFactory.createWith80Months();
+			f.setMonths(79);
+		});
+	}
 }
 
