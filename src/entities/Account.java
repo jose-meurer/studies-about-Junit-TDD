@@ -38,6 +38,7 @@ public class Account {
 		if (balance < amount) {
 			throw new IllegalArgumentException("Insufficient funds");
 		}
+		balance -= amount;
 	}
 	
 	public double fullWithdraw() {
